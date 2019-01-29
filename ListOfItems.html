@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>List of Items</h1>
+    <ul id="myList">
+    <li>First <a href="#" class ='deleteButon'>Delete</a></li>
+    <li>Second <a href="#" class ='deleteButon'>Delete</a></li>
+    </ul>
+    <input type="text" name="" id="itemName"/>
+    <input type="button"  id="addItem" value="Add" />
+<script>
+    document.getElementById('addItem').addEventListener('click',addItem)
+
+    let deleteButon = document.getElementsByClassName('deleteButon');
+    for(let delButton of deleteButon) {
+        delButton.addEventListener('click', deleteItem)
+    }
+ 
+function addItem(){
+const itemName = document.getElementById('itemName').value;
+let elem = document.createElement('li')
+elem.innerHTML = itemName +' <a href="#" class="deleteButon">Delete</a>';
+
+elem.childNodes[1].addEventListener('click',deleteItem)    
+document.getElementById('myList').appendChild(elem);
+document.getElementById('itemName').value = '';
+
+}
+function deleteItem(evt){
+document.getElementById('myList').removeChild(evt.target.parentNode)
+}
+</script>
+</body>
+</html> 

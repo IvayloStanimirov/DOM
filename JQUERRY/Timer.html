@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Timer</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"    integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+            crossorigin="anonymous"></script>
+    <style>
+        #timer {
+            font-size: 5em;
+        }
+    </style>
+</head>
+<body>
+<div id="timer">
+    <span id="hours" class="timer">00</span>:
+    <span id="minutes" class="timer">00</span>:
+    <span id="seconds" class="timer">00</span>
+    <button id="start-timer">Start</button>
+    <button id="stop-timer">Stop</button>
+</div>
+<script>
+        window.onload=function(){
+            timer();
+        }
+    </script>
+<script>
+    function timer(){
+        let hours   = $('#hours');
+        let minutes = $('#minutes')
+        let seconds = $('#seconds')
+        let start   = $('#start-timer')
+        let stop    = $('#stop-timer')
+        $(start).on('click', function() {
+            
+           setInterval(function() 
+           {
+               //Setting the seconds
+              if(+seconds.text()<9){
+                 seconds.text(`0${+seconds.text()+1}`)
+            }else {
+               seconds.text(+seconds.text() + 1)
+              }
+
+              //Setting the minutes
+            if(+seconds.text()>59){
+                if(+minutes.text()<9){
+            
+                    minutes.text(`0${+minutes.text()+1}`)
+            
+                }else {
+            
+                    minutes.text(+minutes.text() + 1)
+            
+                }
+                //Setting the seconds to 0 
+                seconds.text('00')
+
+
+            }
+
+            //Setting the hours
+            if(+minutes.text()>59){
+                
+                if(+hours.text()<9){
+            
+            hours.text(`0${+hours.text()+1}`)
+    
+        }else {
+    
+            hours.text(+hours.text() + 1)
+    
+        }
+            //Setting the minutes to 0 
+            minutes.text(00)
+            }
+
+            }
+           ,1000)
+           
+
+    })
+
+    }
+</script>
+</body>
+</html>

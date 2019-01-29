@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Countries Table</title>
+    <style>
+        td, th { background: #DDD; padding: 5px 10px }
+        input[type='text'] { width: 60px }
+        a { margin-left: 5px }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" 
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  
+    </head>
+    <body>
+    <table id="countriesTable">
+        <tr>
+            <th>Country</th>
+            <th>Capital</th>
+            <th>Action</th> 
+        </tr>
+        <tr>
+            <td><input type="text" id="newCountryText" /></td>
+            <td><input type="text" id="newCapitalText" /></td>
+            <td><a href="#" id="createLink">[Create]</a></td>
+        </tr>
+    </table>
+    <script>
+        $('#createLink').on('click',(e) =>{
+            
+            e.preventDefault()
+            e.stopPropagation()
+            
+            const countryName = $('#newCountryText').val();
+            const capitalName = $('#newCapitalText').val();
+
+
+
+        $('#countriesTable')
+        .append
+        (`<tr><td>${countryName}</td>
+            <td>${capitalName}</td>
+            <td><a href='#'>Up</a>
+                <a href='#'>Down</a>
+                <a href='#'>Delete</a></td></tr>`)    
+        
+
+        $('#countriesTable tr:last-child td:last-child a')
+        .on('click', (e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            let $target = $(e.target);
+            let $tr = $target.parent().parent()
+
+            if($target.text().indexOf('Delete') > -1){
+                $tr.remove();
+            }else if($target.text().indexOf('Up') > -1){
+                $tr.insertBefore($tr.prev());
+            }else if($target.text().indexOf('Down') > -1){
+                $tr.insertAfter($tr.next());
+            }
+
+        })
+    })
+
+    
+    </script>
+    </body>
+    </html>
+    

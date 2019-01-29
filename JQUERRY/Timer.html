@@ -31,9 +31,11 @@
         let seconds = $('#seconds')
         let start   = $('#start-timer')
         let stop    = $('#stop-timer')
+        let timer = 0;
         $(start).on('click', function() {
             
-           setInterval(function() 
+
+             timer = setInterval(function() 
            {
                //Setting the seconds
               if(+seconds.text()<9){
@@ -78,10 +80,10 @@
             }
            ,1000)
            
+              })
+              $(stop).on('click',()=> clearInterval(timer))
 
-    })
-
-    }
+}
 </script>
 </body>
 </html>

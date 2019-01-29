@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+        <head>
+        
+          <meta charset="UTF-8"><title>Focus</title>
+        
+          <style>
+        
+            div { width: 470px; }
+        
+            div div {
+        
+              text-align: center;
+        
+              display: inline-block;
+        
+              width: 200px;
+        
+              height: 200px;
+        
+              margin: 15px;
+        
+              border: 1px solid rgb(216, 219, 32);
+        
+            }
+            .blur {background: #46d641}
+            .focused { background: #6d63cc; }
+        
+          </style>
+        
+        </head>
+        
+        <body onload="focus()">
+        
+          <div>
+        
+            <div><h1>Section 1</h1><input type="text" class="select"/></div>
+        
+            <div><h1>Section 2</h1><input type="text" class="select"/></div>
+        
+            <div><h1>Section 3</h1><input type="text" class="select" /></div>
+        
+            <div><h1>Section 4</h1><input type="text" class="select" /></div>
+        
+          </div>
+        
+          <script>
+        
+            function focus() {
+            let inputs = document.getElementsByClassName('select');
+            
+            for(let inpu of inputs){
+                inpu.addEventListener("focus",(i) => {
+                    i.target.parentNode.className = "focused"
+                });
+                
+                inpu.addEventListener("blur",(i) => {
+                    i.target.parentNode.className = "blur";
+            })
+              
+        
+            }
+            }
+        
+          </script>
+        
+        </body>
+        
+        </html>
